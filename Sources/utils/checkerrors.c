@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkerrors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:10:24 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 19:59:12 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/07 18:27:16 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ int	check_dups(int argc, char **argv)
 	return (0);
 }
 
+// int	check_dups(int ac, char **av)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 1;
+// 	j = 0;
+// 	while (i < ac)
+// 	{
+// 		j = i + 1;
+// 		while (j < ac)
+// 		{
+// 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+// 				return (1);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
 int	negative(int argc, char **argv)
 {
 	int	i;
@@ -64,8 +84,8 @@ int	negative(int argc, char **argv)
 		j = 0;
 		if (argv[i][j] == '-')
 		{
-			j += 1;
-			if (!(argv[i][j] > '0' && argv[i][j] <= '9'))
+			j++;
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
 				return (1);
 		}
 		while (argv[i][j])

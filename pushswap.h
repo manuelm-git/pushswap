@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:06:23 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 20:12:37 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/09 17:35:40 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 	int				content;
 	int				index;
-}	t_stack;
+}					t_stack;
 
 int		issorted(t_stack **a);
 void	ft_lstaddback(t_stack **lst, t_stack *newnode);
@@ -58,5 +58,8 @@ void 	alg3(t_stack **a);
 void 	pushsmallest(t_stack **a, t_stack **b, int position, int flag);
 void 	alg5(t_stack **a,t_stack **b);
 int 	getsmallest(t_stack **a);
-
+void	alg100(t_stack **a, t_stack **b);
+int putina(t_stack **a,t_stack **b,int *big,int index);
+int putina2(t_stack **a,t_stack **b,int *big,int index);
+void	print_list(t_stack **stack);
 #endif

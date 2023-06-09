@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: manumart <manumart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 20:06:13 by manumart          #+#    #+#              #
-#    Updated: 2023/06/08 12:12:57 by marvin           ###   ########.fr        #
+#    Updated: 2023/06/09 18:40:58 by manumart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,26 +30,28 @@ Sources/utils/ft_strncmp.c \
 Sources/utils/utils.c \
 Sources/alg/alg3.c \
 Sources/alg/alg5.c \
+Sources/alg/alg100.c \
 main.c 
 
 
 OBJS	=	${SRCS:.c=.o}
 CC =cc
-RM =rm -f
+RM =rm -rf
 CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 FT_PRINTF = ./ft_printf/libftprintf.a
 FT_PRINTF_PATH = ./ft_printf
 
-all:$(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 			make -C $(FT_PRINTF_PATH) 
-			@${CC} ${CFLAGS} $(OBJS) ${FT_PRINTF} -o ${NAME}
+			${CC} ${CFLAGS} $(OBJS) ${FT_PRINTF} -o ${NAME}
 clean:
-	$(RM)	$(SRC:=.o) $(BONUS:=.o)
+	$(RM)	$(OBJS)
+	@make clean -C ${FT_PRINTF_PATH}
 fclean: clean
-		@rm -rf ${OBJS}
+		@rm -rf ${NAME}
 		@make fclean -C ${FT_PRINTF_PATH}
  
 re:	fclean	$(NAME)

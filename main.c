@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:49:59 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 20:30:13 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/09 21:45:55 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ int	issorted(t_stack **a)
 void algifcase(t_stack **a,t_stack **b,int argc)
 {
 	if (issorted(a))
-		return ; 
+		return ;
 	if (argc == 3)
 		swap(a, 0);
 	else if(argc == 4)
 		alg3(a);
 	else if(argc == 5 || argc == 6)
-		alg5(a,b);
+		alg5(a, b);
+	else if(argc > 6 && argc < 501)
+		alg100(a, b);
 	else
 		ft_printf("fodasse ainda falta");
 }
@@ -65,6 +67,7 @@ int	main(int argc, char **argv)
 	putlist(&a,argc,argv);
 	get_index(&a);
 	algifcase(&a,&b,argc);
+	issorted(&a);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 }

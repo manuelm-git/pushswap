@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:19 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 19:26:39 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/02 12:22:17 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	swap(t_stack **lst, int i)
 
 void	ss(t_stack **a, t_stack **b, int i)
 {
-	swap(a, 2);
+	swap(a, 1);
 	swap(b, 2);
-	if (i == 2)
+	if (i == 3)
 		ft_printf("ss\n");
 }

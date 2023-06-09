@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:49:00 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 19:22:58 by manel            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:06:01 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	ft_lstaddback(t_stack **lst, t_stack *newnode)
 	if (!lst | !newnode)
 		return ;
 	if (!*lst)
+	{
 		*lst = newnode;
+	}
 	else
 	{
 		lastnode = ft_lstgetlast(*lst);

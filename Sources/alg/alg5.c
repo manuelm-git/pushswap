@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg5.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 20:23:02 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 20:46:44 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/09 17:46:46 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int getsmallest(t_stack **a)
 	t_stack *cursor;
 	t_stack *smallest;
 
-	position = 0;
 	cursor = *a;
 	smallest = *a;
+	position = 0;
 
 	while (cursor)
 	{
@@ -31,8 +31,9 @@ int getsmallest(t_stack **a)
 	cursor = *a;
 	while (cursor != smallest)
 	{
-		cursor = cursor->next;
 		position++;
+		cursor = cursor->next;
+		
 	}
 	return (position);
 }
@@ -46,16 +47,19 @@ void pushsmallest(t_stack **a, t_stack **b, int position, int flag)
 		else
 			position = 5 - position;
 		while (position)
+		{
 			rev_rotate(a, 0);
+			position--;
+		}
 	}
 	else
+	{
+		while (position)
 		{
-			while (position)
-			{
-				rotate(a, 0);
-				position--;
-			}
+			rotate(a, 0);
+			position--;
 		}
+	}
 	push(a, b, 1);
 }
 void alg5(t_stack **a,t_stack **b)
@@ -76,4 +80,16 @@ void alg5(t_stack **a,t_stack **b)
 		alg3(a);
 	while (*b)
 		push(b,a,0);
+}
+void	print_list(t_stack **stack)
+{
+	if (!*stack)
+		return ;
+	t_stack *current;
+	current = *stack;
+	while (current != NULL)
+	{
+		ft_printf("%d\n", current->content);
+		current = current->next;
+	}
 }

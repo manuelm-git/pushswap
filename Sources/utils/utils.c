@@ -6,7 +6,7 @@
 /*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:47:34 by manumart          #+#    #+#             */
-/*   Updated: 2023/05/22 14:36:32 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:39:16 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,5 @@ void	get_index(t_stack **a)
 		cursor = cursor->next;
 	}
 }
+
+//int putina()

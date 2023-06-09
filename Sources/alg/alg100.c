@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg100.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manel <manel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:16:07 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/08 20:48:24 by manel            ###   ########.fr       */
+/*   Updated: 2023/06/09 19:25:57 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void pushtotop(t_stack **stack,int index, int whichstack)
 {
 	if (index == -1)
 		return ;
-	if (index < (ft_listsize(*stack) / 2))
+	if (index < (ft_lstsize(*stack) / 2))
 		rotate(stack, whichstack);
 	else
 		rev_rotate(stack, whichstack);
@@ -30,7 +30,7 @@ int getbiggestindex(t_stack **stack)
 	big = cursor->index;
 	while (cursor)
 	{
-		if (big < cursor->index)
+		if (cursor->index > big)
 			big = cursor->index;
 		cursor = cursor->next; 
 	}
@@ -50,7 +50,7 @@ int indexchecker(t_stack **stack,int i)
 		if (cursor->index == i)
 		{
 			flag = 0;
-			break;
+			break ;
 		}
 		position++;
 		cursor = cursor->next;
@@ -60,15 +60,7 @@ int indexchecker(t_stack **stack,int i)
 		return (-1);
 	return (position);
 }
-void toptolist(t_stack **stack,int index,int whichstack)
-{
-	if (index == -1)
-		return ;
-	if (index < ft_lstsize(*stack) / 2)
-		rotate(stack,whichstack);
-	else
-		rev_rotate(stack,whichstack);
-}
+
 void putinb(t_stack **a, t_stack **b, int size)
 {
 	int chunk;
@@ -80,12 +72,12 @@ void putinb(t_stack **a, t_stack **b, int size)
 	{
 		if ((*a)->index < chunk)
 		{
-			push(a,b,1);
+			push(a, b, 1);
 			position++;
 		}
 		else if(position == chunk)
 		{
-			if (size < 100)
+			if (size > 100)
 			{
 				chunk += 30;
 			}
@@ -93,23 +85,67 @@ void putinb(t_stack **a, t_stack **b, int size)
 				chunk += 15;
 		}
 		else
-			pushtotop(a, index_checker(a, (*a)->index), 0);
+			pushtotop(a, indexchecker(a, (*a)->index), 0);
 	}
 	
 }
-/*
+
+int putina(t_stack **a,t_stack **b,int *big,int index)
+{
+	if ((*a) && (*a)->next && (*a)->content > (*a)->next->content)
+	{
+		swap(a, 0);
+		(*big)--;
+		index = indexchecker(b, *big);
+	}
+	else if (indexchecker(b, (*big)) == 0)
+	{
+		push(b, a, 0);
+		(*big)--;
+		index = indexchecker(b, (*big));
+	}
+	else if (index == 1 && (indexchecker(b, (*big) - 1)) == 0)
+	{
+		swap(b, 1);
+		index = indexchecker(b, (*big));
+	}
+	index = putina2(a, b, big, index);
+	return (index);
+}
+int putina2(t_stack **a,t_stack **b,int *big,int index)
+{
+	if (index == 2 && (indexchecker(b, ((*big) - 1)) == 0))
+	{
+		push(b, a,0);
+		(*big)--;
+		rotate(b,1);
+		push(b, a,0);
+		(*big)--;
+		swap(a, 0);
+		index = indexchecker(b, (*big));
+	}
+	else if ((indexchecker(b, ((*big) - 1)) == 0))
+	{
+		push(b, a, 0);
+		index = indexchecker(b, (*big));
+	}
+	else
+	{
+		pushtotop(b, index, 1);
+		index = indexchecker(b, (*big));
+	}
+	return (index);
+}
 void alg100(t_stack **a, t_stack **b)
 {
 	int index;
 	int big;
 
-	putinb(a, b, ft_lstsize(*a))
-	big = getbiggestindex(b)
-	index = index_checker(b,big);
-	while ((*b) != NULL  && index == index_checker(b, big))
-	{
-		index = putina
-	}
-	
-	
-}*/
+	putinb(a, b, ft_lstsize(*a));
+	big = getbiggestindex(b);
+	index = indexchecker(b, big);
+	while ((*b) != NULL  && index == indexchecker(b, big))
+		index = putina(a, b, &big, index);
+	if ((*b) == NULL && (*a)->content > (*a)->next->content)
+		swap(a, 0);
+}
