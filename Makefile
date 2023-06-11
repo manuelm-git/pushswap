@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: manumart <manumart@student.42.fr>          +#+  +:+       +#+         #
+#    By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 20:06:13 by manumart          #+#    #+#              #
-#    Updated: 2023/06/09 18:40:58 by manumart         ###   ########.fr        #
+#    Updated: 2023/06/11 18:01:54 by manumart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ Sources/utils/utils.c \
 Sources/alg/alg3.c \
 Sources/alg/alg5.c \
 Sources/alg/alg100.c \
+Sources/alg/alg500.c \
 main.c 
 
 

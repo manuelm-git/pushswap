@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:49:59 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/09 21:45:55 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:36:25 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void algifcase(t_stack **a,t_stack **b,int argc)
 		alg5(a, b);
 	else if(argc > 6 && argc < 501)
 		alg100(a, b);
-	else
-		ft_printf("fodasse ainda falta");
+	else if(argc >= 501)
+		alg500(a, b);
 }
 int	main(int argc, char **argv)
 {
@@ -67,7 +67,6 @@ int	main(int argc, char **argv)
 	putlist(&a,argc,argv);
 	get_index(&a);
 	algifcase(&a,&b,argc);
-	issorted(&a);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 }

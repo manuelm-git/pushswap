@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:06:23 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/09 17:35:40 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:22:11 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,6 @@ void	alg100(t_stack **a, t_stack **b);
 int putina(t_stack **a,t_stack **b,int *big,int index);
 int putina2(t_stack **a,t_stack **b,int *big,int index);
 void	print_list(t_stack **stack);
+void	alg500(t_stack **a, t_stack **b);
+int getbiggestindex(t_stack **stack);
 #endif

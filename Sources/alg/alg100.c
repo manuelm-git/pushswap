@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg100.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:16:07 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/09 19:25:57 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:00:32 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ int indexchecker(t_stack **stack,int i)
 void putinb(t_stack **a, t_stack **b, int size)
 {
 	int chunk;
-	int position;
+	int counterb;
 
 	chunk = 30;
-	position = 0;
+	counterb = 0;
 	while (*a != NULL)
 	{
 		if ((*a)->index < chunk)
 		{
 			push(a, b, 1);
-			position++;
+			counterb++;
 		}
-		else if(position == chunk)
+		else if(counterb == chunk)
 		{
 			if (size > 100)
 			{
@@ -98,15 +98,19 @@ int putina(t_stack **a,t_stack **b,int *big,int index)
 		(*big)--;
 		index = indexchecker(b, *big);
 	}
-	else if (indexchecker(b, (*big)) == 0)
+	else if ((indexchecker(b, ((*big) - 1)) == 0))
+	{
+		push(b, a, 0);
+		index = indexchecker(b, (*big));
+	}
+	else if (index == 2 && (indexchecker(b, ((*big) - 1)) == 0))
 	{
 		push(b, a, 0);
 		(*big)--;
-		index = indexchecker(b, (*big));
-	}
-	else if (index == 1 && (indexchecker(b, (*big) - 1)) == 0)
-	{
-		swap(b, 1);
+		rotate(b, 1);
+		push(b, a,0);
+		(*big)--;
+		swap(a, 0);
 		index = indexchecker(b, (*big));
 	}
 	index = putina2(a, b, big, index);
@@ -114,19 +118,15 @@ int putina(t_stack **a,t_stack **b,int *big,int index)
 }
 int putina2(t_stack **a,t_stack **b,int *big,int index)
 {
-	if (index == 2 && (indexchecker(b, ((*big) - 1)) == 0))
+	if (index == 1 && (indexchecker(b, (*big) - 1)) == 0)
 	{
-		push(b, a,0);
-		(*big)--;
-		rotate(b,1);
-		push(b, a,0);
-		(*big)--;
-		swap(a, 0);
+		swap(b, 1);
 		index = indexchecker(b, (*big));
 	}
-	else if ((indexchecker(b, ((*big) - 1)) == 0))
+	else if (indexchecker(b, (*big)) == 0)
 	{
 		push(b, a, 0);
+		(*big)--;
 		index = indexchecker(b, (*big));
 	}
 	else
