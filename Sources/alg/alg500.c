@@ -6,16 +6,16 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:23:17 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 18:27:49 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:42:46 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushswap.h"
 
-int pos_checker(t_stack **b,int big, int size)
+int	pos_checker(t_stack **b, int big, int size)
 {
-	int i;
-	t_stack *cursor;
+	int		i;
+	t_stack	*cursor;
 
 	i = 0;
 	cursor = *b;
@@ -27,27 +27,29 @@ int pos_checker(t_stack **b,int big, int size)
 	size = size - i;
 	if (i < size)
 		return (0);
-	return(1);
+	return (1);
 }
-void sort_a(t_stack **a, t_stack **b)
+
+void	sort_a(t_stack **a, t_stack **b)
 {
 	while ((*b))
 	{
 		if (!(b))
-			break;
-		if ((*b)->index != getbiggestindex(b) && !pos_checker(b, getbiggestindex(b), ft_lstsize(*b)))
-			rotate(b,1);
-		else if ((*b)->index != getbiggestindex(b) && pos_checker(b, getbiggestindex(b), ft_lstsize(*b)))
-			rev_rotate(b,1);
+			break ;
+		if ((*b)->index != getbiggestindex(b) && !pos_checker(b,
+				getbiggestindex(b), ft_lstsize(*b)))
+			rotate(b, 1);
+		else if ((*b)->index != getbiggestindex(b) && pos_checker(b,
+				getbiggestindex(b), ft_lstsize(*b)))
+			rev_rotate(b, 1);
 		else if ((*b)->index == getbiggestindex(b))
-			push(b,a,0);
+			push(b, a, 0);
 	}
-	
 }
 
 void	alg500(t_stack **a, t_stack **b)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*a)
@@ -64,7 +66,7 @@ void	alg500(t_stack **a, t_stack **b)
 			i++;
 		}
 		else if ((*a)->index >= i)
-			rotate(a,0);
+			rotate(a, 0);
 	}
-	sort_a(a,b);
+	sort_a(a, b);
 }

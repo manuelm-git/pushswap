@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:47:34 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/07 16:39:16 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:40:23 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,3 @@ void	get_index(t_stack **a)
 		cursor = cursor->next;
 	}
 }
-
-//int putina()

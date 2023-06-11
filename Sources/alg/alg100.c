@@ -6,13 +6,13 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:16:07 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 14:00:32 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:44:48 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushswap.h"
 
-void pushtotop(t_stack **stack,int index, int whichstack)
+void	pushtotop(t_stack **stack, int index, int whichstack)
 {
 	if (index == -1)
 		return ;
@@ -21,10 +21,11 @@ void pushtotop(t_stack **stack,int index, int whichstack)
 	else
 		rev_rotate(stack, whichstack);
 }
-int getbiggestindex(t_stack **stack)
+
+int	getbiggestindex(t_stack **stack)
 {
-	t_stack *cursor;
-	int big;
+	t_stack	*cursor;
+	int		big;
 
 	cursor = *stack;
 	big = cursor->index;
@@ -32,15 +33,16 @@ int getbiggestindex(t_stack **stack)
 	{
 		if (cursor->index > big)
 			big = cursor->index;
-		cursor = cursor->next; 
+		cursor = cursor->next;
 	}
 	return (big);
 }
-int indexchecker(t_stack **stack,int i)
+
+int	indexchecker(t_stack **stack, int i)
 {
-	t_stack *cursor;
-	int position;
-	int flag;
+	t_stack	*cursor;
+	int		position;
+	int		flag;
 
 	position = 0;
 	flag = -1;
@@ -54,17 +56,16 @@ int indexchecker(t_stack **stack,int i)
 		}
 		position++;
 		cursor = cursor->next;
-
 	}
 	if (flag == -1)
 		return (-1);
 	return (position);
 }
 
-void putinb(t_stack **a, t_stack **b, int size)
+void	putinb(t_stack **a, t_stack **b, int size)
 {
-	int chunk;
-	int counterb;
+	int	chunk;
+	int	counterb;
 
 	chunk = 30;
 	counterb = 0;
@@ -75,7 +76,7 @@ void putinb(t_stack **a, t_stack **b, int size)
 			push(a, b, 1);
 			counterb++;
 		}
-		else if(counterb == chunk)
+		else if (counterb == chunk)
 		{
 			if (size > 100)
 			{
@@ -87,10 +88,9 @@ void putinb(t_stack **a, t_stack **b, int size)
 		else
 			pushtotop(a, indexchecker(a, (*a)->index), 0);
 	}
-	
 }
 
-int putina(t_stack **a,t_stack **b,int *big,int index)
+int	putina(t_stack **a, t_stack **b, int *big, int index)
 {
 	if ((*a) && (*a)->next && (*a)->content > (*a)->next->content)
 	{
@@ -108,7 +108,7 @@ int putina(t_stack **a,t_stack **b,int *big,int index)
 		push(b, a, 0);
 		(*big)--;
 		rotate(b, 1);
-		push(b, a,0);
+		push(b, a, 0);
 		(*big)--;
 		swap(a, 0);
 		index = indexchecker(b, (*big));
@@ -116,7 +116,8 @@ int putina(t_stack **a,t_stack **b,int *big,int index)
 	index = putina2(a, b, big, index);
 	return (index);
 }
-int putina2(t_stack **a,t_stack **b,int *big,int index)
+
+int	putina2(t_stack **a, t_stack **b, int *big, int index)
 {
 	if (index == 1 && (indexchecker(b, (*big) - 1)) == 0)
 	{
@@ -136,7 +137,7 @@ int putina2(t_stack **a,t_stack **b,int *big,int index)
 	}
 	return (index);
 }
-void alg100(t_stack **a, t_stack **b)
+void	alg100(t_stack **a, t_stack **b)
 {
 	int index;
 	int big;
@@ -144,7 +145,7 @@ void alg100(t_stack **a, t_stack **b)
 	putinb(a, b, ft_lstsize(*a));
 	big = getbiggestindex(b);
 	index = indexchecker(b, big);
-	while ((*b) != NULL  && index == indexchecker(b, big))
+	while ((*b) != NULL && index == indexchecker(b, big))
 		index = putina(a, b, &big, index);
 	if ((*b) == NULL && (*a)->content > (*a)->next->content)
 		swap(a, 0);

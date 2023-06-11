@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manumart <manumart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:09:09 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/07 15:27:42 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:40:02 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushswap.h"
 
-void	rotate(t_stack **lst,int i)
+void	rotate(t_stack **lst, int i)
 {
 	t_stack	*temp;
 	t_stack	*cursor;
@@ -29,9 +29,9 @@ void	rotate(t_stack **lst,int i)
 		ft_printf("rb\n");
 }
 
-void rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b)
 {
-	rotate(a,2);
-	rotate(b,2);
+	rotate(a, 2);
+	rotate(b, 2);
 	ft_printf("rr\n");
 }
