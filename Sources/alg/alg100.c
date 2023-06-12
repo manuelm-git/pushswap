@@ -6,61 +6,11 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:16:07 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 21:44:48 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:51:05 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../pushswap.h"
-
-void	pushtotop(t_stack **stack, int index, int whichstack)
-{
-	if (index == -1)
-		return ;
-	if (index < (ft_lstsize(*stack) / 2))
-		rotate(stack, whichstack);
-	else
-		rev_rotate(stack, whichstack);
-}
-
-int	getbiggestindex(t_stack **stack)
-{
-	t_stack	*cursor;
-	int		big;
-
-	cursor = *stack;
-	big = cursor->index;
-	while (cursor)
-	{
-		if (cursor->index > big)
-			big = cursor->index;
-		cursor = cursor->next;
-	}
-	return (big);
-}
-
-int	indexchecker(t_stack **stack, int i)
-{
-	t_stack	*cursor;
-	int		position;
-	int		flag;
-
-	position = 0;
-	flag = -1;
-	cursor = *stack;
-	while (cursor)
-	{
-		if (cursor->index == i)
-		{
-			flag = 0;
-			break ;
-		}
-		position++;
-		cursor = cursor->next;
-	}
-	if (flag == -1)
-		return (-1);
-	return (position);
-}
 
 void	putinb(t_stack **a, t_stack **b, int size)
 {
@@ -137,10 +87,11 @@ int	putina2(t_stack **a, t_stack **b, int *big, int index)
 	}
 	return (index);
 }
+
 void	alg100(t_stack **a, t_stack **b)
 {
-	int index;
-	int big;
+	int	index;
+	int	big;
 
 	putinb(a, b, ft_lstsize(*a));
 	big = getbiggestindex(b);

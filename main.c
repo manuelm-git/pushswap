@@ -6,7 +6,7 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:49:59 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 21:40:31 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:48:25 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	putlist(t_stack **lst, int argc, char **argv)
 	while (++i < argc)
 		ft_lstaddback(lst, ft_lstnew(ft_atoi(argv[i])));
 }
+
 int	issorted(t_stack **a)
 {
 	t_stack	*cursor;
@@ -35,6 +36,7 @@ int	issorted(t_stack **a)
 	ft_printf("sorted\n");
 	return (1);
 }
+
 void	algifcase(t_stack **a, t_stack **b, int argc)
 {
 	if (issorted(a))
@@ -50,6 +52,7 @@ void	algifcase(t_stack **a, t_stack **b, int argc)
 	else if (argc >= 501)
 		alg500(a, b);
 }
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;

@@ -6,7 +6,7 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 20:23:02 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 21:39:31 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:50:02 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	pushsmallest(t_stack **a, t_stack **b, int position, int flag)
 	}
 	push(a, b, 1);
 }
+
 void	alg5(t_stack **a, t_stack **b)
 {
 	t_stack	*cursor;
@@ -79,11 +80,13 @@ void	alg5(t_stack **a, t_stack **b)
 	while (*b)
 		push(b, a, 0);
 }
+
 void	print_list(t_stack **stack)
 {
+	t_stack	*current;
+
 	if (!*stack)
 		return ;
-	t_stack *current;
 	current = *stack;
 	while (current != NULL)
 	{

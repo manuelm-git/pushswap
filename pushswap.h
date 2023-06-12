@@ -6,7 +6,7 @@
 /*   By: manumart <manumart@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:06:23 by manumart          #+#    #+#             */
-/*   Updated: 2023/06/11 21:40:50 by manumart         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:01:07 by manumart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int					ft_strncmp(const char *str1, const char *str2, size_t n);
 void				get_index(t_stack **a);
 void				putlist(t_stack **lst, int argc, char **argv);
 void				alg3(t_stack **a);
-void				pushsmallest(t_stack **a, t_stack **b, int position,int flag);
+void				pushsmallest(t_stack **a, t_stack **b, int position,
+						int flag);
 void				alg5(t_stack **a, t_stack **b);
 int					getsmallest(t_stack **a);
 void				alg100(t_stack **a, t_stack **b);
@@ -64,4 +65,6 @@ int					putina2(t_stack **a, t_stack **b, int *big, int index);
 void				print_list(t_stack **stack);
 void				alg500(t_stack **a, t_stack **b);
 int					getbiggestindex(t_stack **stack);
+int					indexchecker(t_stack **stack, int i);
+void				pushtotop(t_stack **stack, int index, int whichstack);
 #endif
